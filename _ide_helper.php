@@ -26,7 +26,6 @@ namespace Illuminate\Support\Facades {
          * Begin configuring a new Laravel application instance.
          *
          * @return \Illuminate\Foundation\Configuration\ApplicationBuilder
-         *
          * @static
          */
         public static function configure(?string $basePath = null)
@@ -1285,6 +1284,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -1299,7 +1299,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -1433,7 +1432,6 @@ namespace Illuminate\Support\Facades {
          *
          * @throws \TypeError
          * @throws ReflectionException
-         *
          * @static
          */
         public static function bind($abstract, $concrete = null, $shared = false): void
@@ -1587,7 +1585,6 @@ namespace Illuminate\Support\Facades {
          * @param  string  $abstract
          *
          * @throws \InvalidArgumentException
-         *
          * @static
          */
         public static function extend($abstract, $closure): void
@@ -1652,7 +1649,6 @@ namespace Illuminate\Support\Facades {
          * @param  string  $alias
          *
          * @throws \LogicException
-         *
          * @static
          */
         public static function alias($abstract, $alias): void
@@ -3118,6 +3114,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -3132,7 +3129,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -3241,7 +3237,6 @@ namespace Illuminate\Support\Facades {
          * Render a component instance to HTML.
          *
          * @return string
-         *
          * @static
          */
         public static function renderComponent(\Illuminate\View\Component $component)
@@ -3490,7 +3485,6 @@ namespace Illuminate\Support\Facades {
          * @param  callable  $handler
          *
          * @throws \InvalidArgumentException
-         *
          * @static
          */
         public static function bindDirective($name, $handler): void
@@ -3507,7 +3501,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $bind
          *
          * @throws \InvalidArgumentException
-         *
          * @static
          */
         public static function directive($name, $handler, $bind = false): void
@@ -3624,7 +3617,6 @@ namespace Illuminate\Support\Facades {
          * Get a new component hash for a component name.
          *
          * @return string
-         *
          * @static
          */
         public static function newComponentHash(string $component)
@@ -5599,6 +5591,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -5613,7 +5606,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -6260,6 +6252,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -6274,7 +6267,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -6926,6 +6918,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -6940,7 +6933,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -7174,6 +7166,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -7188,7 +7181,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -7583,7 +7575,6 @@ namespace Illuminate\Support\Facades {
          * Calculate the dynamic connection name for an on-demand connection based on its configuration.
          *
          * @return string
-         *
          * @static
          */
         public static function calculateDynamicConnectionName(array $config)
@@ -7791,6 +7782,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -7805,7 +7797,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -9036,7 +9027,6 @@ namespace Illuminate\Support\Facades {
          *
          *
          * @throws \Throwable
-         *
          * @static
          */
         public static function beginTransaction(): void
@@ -9051,7 +9041,6 @@ namespace Illuminate\Support\Facades {
          *
          *
          * @throws \Throwable
-         *
          * @static
          */
         public static function commit(): void
@@ -9067,7 +9056,6 @@ namespace Illuminate\Support\Facades {
          * @param  int|null  $toLevel
          *
          * @throws \Throwable
-         *
          * @static
          */
         public static function rollBack($toLevel = null): void
@@ -9097,7 +9085,6 @@ namespace Illuminate\Support\Facades {
          * @param  callable  $callback
          *
          * @throws \RuntimeException
-         *
          * @static
          */
         public static function afterCommit($callback): void
@@ -9113,7 +9100,6 @@ namespace Illuminate\Support\Facades {
          * @param  callable  $callback
          *
          * @throws \RuntimeException
-         *
          * @static
          */
         public static function afterRollBack($callback): void
@@ -9377,6 +9363,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -9391,7 +9378,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -9893,7 +9879,6 @@ namespace Illuminate\Support\Facades {
          * @param  string  $link
          *
          * @throws \RuntimeException
-         *
          * @static
          */
         public static function relativeLink($target, $link): void
@@ -10343,6 +10328,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -10357,7 +10343,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -11479,6 +11464,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -11493,7 +11479,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -11794,7 +11779,6 @@ namespace Illuminate\Support\Facades {
          * @param  string  $locale
          *
          * @throws \InvalidArgumentException
-         *
          * @static
          */
         public static function setLocale($locale): void
@@ -11864,6 +11848,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -11878,7 +11863,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -12907,6 +12891,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -12921,7 +12906,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -13081,7 +13065,6 @@ namespace Illuminate\Support\Facades {
          * @param  callable|null  $callback
          *
          * @throws \Exception
-         *
          * @static
          */
         public static function assertSentOnDemand($notification, $callback = null): void
@@ -13098,7 +13081,6 @@ namespace Illuminate\Support\Facades {
          * @param  callable|null  $callback
          *
          * @throws \Exception
-         *
          * @static
          */
         public static function assertSentTo($notifiable, $notification, $callback = null): void
@@ -13144,7 +13126,6 @@ namespace Illuminate\Support\Facades {
          * @param  callable|null  $callback
          *
          * @throws \Exception
-         *
          * @static
          */
         public static function assertNotSentTo($notifiable, $notification, $callback = null): void
@@ -13171,7 +13152,6 @@ namespace Illuminate\Support\Facades {
          * @param  mixed  $notifiable
          *
          * @throws \Exception
-         *
          * @static
          */
         public static function assertNothingSentTo($notifiable): void
@@ -13604,6 +13584,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -13618,7 +13599,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -14510,7 +14490,6 @@ namespace Illuminate\Support\Facades {
          * @param  string  $id
          *
          * @throws \Throwable
-         *
          * @static
          */
         public static function deleteReserved($queue, $id): void
@@ -15150,6 +15129,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -15164,7 +15144,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -15654,7 +15633,6 @@ namespace Illuminate\Support\Facades {
          * Create an Illuminate request from a Symfony instance.
          *
          * @return static
-         *
          * @static
          */
         public static function createFromBase(\Symfony\Component\HttpFoundation\Request $request)
@@ -16865,6 +16843,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -16879,7 +16858,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -18328,6 +18306,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -18342,7 +18321,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -18917,7 +18895,6 @@ namespace Illuminate\Support\Facades {
          *
          * @throws \Illuminate\Database\Eloquent\ModelNotFoundException<\Illuminate\Database\Eloquent\Model>
          * @throws \Illuminate\Routing\Exceptions\BackedEnumCaseNotFoundException
-         *
          * @static
          */
         public static function substituteImplicitBindings($route): void
@@ -19427,7 +19404,6 @@ namespace Illuminate\Support\Facades {
          * Remove any duplicate middleware from the given array.
          *
          * @return array
-         *
          * @static
          */
         public static function uniqueMiddleware(array $middleware)
@@ -19457,6 +19433,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -19471,7 +19448,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -19683,7 +19659,6 @@ namespace Illuminate\Support\Facades {
          * @param  \Closure  $events
          *
          * @throws \RuntimeException
-         *
          * @static
          */
         public static function group($events): void
@@ -19771,6 +19746,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -19785,7 +19761,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -20368,7 +20343,6 @@ namespace Illuminate\Support\Facades {
          *
          *
          * @throws \LogicException
-         *
          * @static
          */
         public static function dropAllTypes(): void
@@ -20459,7 +20433,6 @@ namespace Illuminate\Support\Facades {
          * @param  string|null  $schema
          *
          * @throws \RuntimeException
-         *
          * @static
          */
         public static function ensureExtensionExists($name, $schema = null): void
@@ -20537,6 +20510,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -20552,7 +20526,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -21497,6 +21470,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -21511,7 +21485,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -22625,6 +22598,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -22640,7 +22614,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -23140,7 +23113,6 @@ namespace Illuminate\Support\Facades {
          * @param  string|null  $root
          *
          * @deprecated Use useOrigin
-         *
          * @static
          */
         public static function forceRootUrl($root): void
@@ -23334,6 +23306,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -23348,7 +23321,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -24060,6 +24032,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -24074,7 +24047,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -25039,6 +25011,7 @@ namespace Illuminate\Support\Facades {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -25053,7 +25026,6 @@ namespace Illuminate\Support\Facades {
          * @param  bool  $replace
          *
          * @throws \ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void
@@ -25291,8 +25263,7 @@ namespace {
      */
     final class Eloquent extends Illuminate\Database\Eloquent\Model
     {
-        use Illuminate\Database\Eloquent\Factories\HasFactory;
-
+        use \Illuminate\Database\Eloquent\Factories\HasFactory;
         /**
          * Create and return an un-saved model instance.
          *
@@ -30320,7 +30291,7 @@ namespace {
         /**
          * Merge an array of bindings into our bindings.
          *
-         * @param  Illuminate\Database\Eloquent\Model  $query
+         * @param \Illuminate\Database\Eloquent\Model $query
          * @return Illuminate\Database\Eloquent\Builder<static>
          *
          * @static
@@ -30751,6 +30722,7 @@ namespace {
          *
          * @param-closure-this static  $macro
          *
+         *
          * @static
          */
         public static function macro($name, $macro): void
@@ -30765,7 +30737,6 @@ namespace {
          * @param  bool  $replace
          *
          * @throws ReflectionException
-         *
          * @static
          */
         public static function mixin($mixin, $replace = true): void

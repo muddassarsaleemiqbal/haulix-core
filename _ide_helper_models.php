@@ -13,7 +13,7 @@ declare(strict_types=1);
  */
 
 namespace App\Models{
-    use AllowDynamicProperties;
+    use Eloquent;
 
     /**
      * @property int $id
@@ -45,9 +45,6 @@ namespace App\Models{
      * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereTwoFactorRecoveryCodes($value)
      * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereTwoFactorSecret($value)
      * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
-     *
-     * @mixin \Illuminate\Database\Eloquent\Model
      */
-    #[AllowDynamicProperties]
-    final class IdeHelperUser {}
+    final class User extends Eloquent {}
 }

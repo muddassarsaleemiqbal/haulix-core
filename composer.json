@@ -83,7 +83,7 @@
         "generate": [
             "php artisan ide-helper:generate",
             "php artisan ide-helper:meta",
-            "php artisan ide-helper:models -M"
+            "php artisan ide-helper:models -W"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",

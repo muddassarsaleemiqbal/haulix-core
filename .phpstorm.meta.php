@@ -9,8 +9,19 @@ namespace PHPSTORM_META {
     use App;
 
     use function __;
+    use function app;
+    use function array_add;
+    use function array_except;
     use function array_first;
+    use function array_get;
     use function array_last;
+    use function array_only;
+    use function array_prepend;
+    use function array_pull;
+    use function array_set;
+    use function array_sort;
+    use function array_sort_recursive;
+    use function array_where;
     use function auth;
     use function config;
     use function env;
@@ -25,6 +36,7 @@ namespace PHPSTORM_META {
     use function to_route;
     use function trans;
     use function view;
+    use function with;
 
     /**
      * PhpStorm Meta file, to provide autocomplete information for PhpStorm
@@ -54,7 +66,7 @@ namespace PHPSTORM_META {
         \Illuminate\Routing\Contracts\ControllerDispatcher::class => \Illuminate\Routing\ControllerDispatcher::class,
         \Inertia\Ssr\Gateway::class => \Inertia\Ssr\HttpGateway::class,
         \Laravel\Fortify\Contracts\ConfirmPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\CreatesNewUsers::class => App\Actions\Fortify\CreateNewUser::class,
+        \Laravel\Fortify\Contracts\CreatesNewUsers::class => \App\Actions\Fortify\CreateNewUser::class,
         \Laravel\Fortify\Contracts\EmailVerificationNotificationSentResponse::class => \Laravel\Fortify\Http\Responses\EmailVerificationNotificationSentResponse::class,
         \Laravel\Fortify\Contracts\FailedPasswordConfirmationResponse::class => \Laravel\Fortify\Http\Responses\FailedPasswordConfirmationResponse::class,
         \Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse::class => \Laravel\Fortify\Http\Responses\FailedTwoFactorLoginResponse::class,
@@ -71,7 +83,7 @@ namespace PHPSTORM_META {
         \Laravel\Fortify\Contracts\RegisterViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\RequestPasswordResetLinkViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\ResetPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => App\Actions\Fortify\ResetUserPassword::class,
+        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => \App\Actions\Fortify\ResetUserPassword::class,
         \Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider::class => \Laravel\Fortify\TwoFactorAuthenticationProvider::class,
         \Laravel\Fortify\Contracts\TwoFactorChallengeViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\TwoFactorConfirmedResponse::class => \Laravel\Fortify\Http\Responses\TwoFactorConfirmedResponse::class,
@@ -153,7 +165,7 @@ namespace PHPSTORM_META {
         \Illuminate\Routing\Contracts\ControllerDispatcher::class => \Illuminate\Routing\ControllerDispatcher::class,
         \Inertia\Ssr\Gateway::class => \Inertia\Ssr\HttpGateway::class,
         \Laravel\Fortify\Contracts\ConfirmPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\CreatesNewUsers::class => App\Actions\Fortify\CreateNewUser::class,
+        \Laravel\Fortify\Contracts\CreatesNewUsers::class => \App\Actions\Fortify\CreateNewUser::class,
         \Laravel\Fortify\Contracts\EmailVerificationNotificationSentResponse::class => \Laravel\Fortify\Http\Responses\EmailVerificationNotificationSentResponse::class,
         \Laravel\Fortify\Contracts\FailedPasswordConfirmationResponse::class => \Laravel\Fortify\Http\Responses\FailedPasswordConfirmationResponse::class,
         \Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse::class => \Laravel\Fortify\Http\Responses\FailedTwoFactorLoginResponse::class,
@@ -170,7 +182,7 @@ namespace PHPSTORM_META {
         \Laravel\Fortify\Contracts\RegisterViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\RequestPasswordResetLinkViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\ResetPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => App\Actions\Fortify\ResetUserPassword::class,
+        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => \App\Actions\Fortify\ResetUserPassword::class,
         \Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider::class => \Laravel\Fortify\TwoFactorAuthenticationProvider::class,
         \Laravel\Fortify\Contracts\TwoFactorChallengeViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\TwoFactorConfirmedResponse::class => \Laravel\Fortify\Http\Responses\TwoFactorConfirmedResponse::class,
@@ -252,7 +264,7 @@ namespace PHPSTORM_META {
         \Illuminate\Routing\Contracts\ControllerDispatcher::class => \Illuminate\Routing\ControllerDispatcher::class,
         \Inertia\Ssr\Gateway::class => \Inertia\Ssr\HttpGateway::class,
         \Laravel\Fortify\Contracts\ConfirmPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\CreatesNewUsers::class => App\Actions\Fortify\CreateNewUser::class,
+        \Laravel\Fortify\Contracts\CreatesNewUsers::class => \App\Actions\Fortify\CreateNewUser::class,
         \Laravel\Fortify\Contracts\EmailVerificationNotificationSentResponse::class => \Laravel\Fortify\Http\Responses\EmailVerificationNotificationSentResponse::class,
         \Laravel\Fortify\Contracts\FailedPasswordConfirmationResponse::class => \Laravel\Fortify\Http\Responses\FailedPasswordConfirmationResponse::class,
         \Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse::class => \Laravel\Fortify\Http\Responses\FailedTwoFactorLoginResponse::class,
@@ -269,7 +281,7 @@ namespace PHPSTORM_META {
         \Laravel\Fortify\Contracts\RegisterViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\RequestPasswordResetLinkViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\ResetPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => App\Actions\Fortify\ResetUserPassword::class,
+        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => \App\Actions\Fortify\ResetUserPassword::class,
         \Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider::class => \Laravel\Fortify\TwoFactorAuthenticationProvider::class,
         \Laravel\Fortify\Contracts\TwoFactorChallengeViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\TwoFactorConfirmedResponse::class => \Laravel\Fortify\Http\Responses\TwoFactorConfirmedResponse::class,
@@ -351,7 +363,7 @@ namespace PHPSTORM_META {
         \Illuminate\Routing\Contracts\ControllerDispatcher::class => \Illuminate\Routing\ControllerDispatcher::class,
         \Inertia\Ssr\Gateway::class => \Inertia\Ssr\HttpGateway::class,
         \Laravel\Fortify\Contracts\ConfirmPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\CreatesNewUsers::class => App\Actions\Fortify\CreateNewUser::class,
+        \Laravel\Fortify\Contracts\CreatesNewUsers::class => \App\Actions\Fortify\CreateNewUser::class,
         \Laravel\Fortify\Contracts\EmailVerificationNotificationSentResponse::class => \Laravel\Fortify\Http\Responses\EmailVerificationNotificationSentResponse::class,
         \Laravel\Fortify\Contracts\FailedPasswordConfirmationResponse::class => \Laravel\Fortify\Http\Responses\FailedPasswordConfirmationResponse::class,
         \Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse::class => \Laravel\Fortify\Http\Responses\FailedTwoFactorLoginResponse::class,
@@ -368,7 +380,7 @@ namespace PHPSTORM_META {
         \Laravel\Fortify\Contracts\RegisterViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\RequestPasswordResetLinkViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\ResetPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => App\Actions\Fortify\ResetUserPassword::class,
+        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => \App\Actions\Fortify\ResetUserPassword::class,
         \Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider::class => \Laravel\Fortify\TwoFactorAuthenticationProvider::class,
         \Laravel\Fortify\Contracts\TwoFactorChallengeViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\TwoFactorConfirmedResponse::class => \Laravel\Fortify\Http\Responses\TwoFactorConfirmedResponse::class,
@@ -450,7 +462,7 @@ namespace PHPSTORM_META {
         \Illuminate\Routing\Contracts\ControllerDispatcher::class => \Illuminate\Routing\ControllerDispatcher::class,
         \Inertia\Ssr\Gateway::class => \Inertia\Ssr\HttpGateway::class,
         \Laravel\Fortify\Contracts\ConfirmPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\CreatesNewUsers::class => App\Actions\Fortify\CreateNewUser::class,
+        \Laravel\Fortify\Contracts\CreatesNewUsers::class => \App\Actions\Fortify\CreateNewUser::class,
         \Laravel\Fortify\Contracts\EmailVerificationNotificationSentResponse::class => \Laravel\Fortify\Http\Responses\EmailVerificationNotificationSentResponse::class,
         \Laravel\Fortify\Contracts\FailedPasswordConfirmationResponse::class => \Laravel\Fortify\Http\Responses\FailedPasswordConfirmationResponse::class,
         \Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse::class => \Laravel\Fortify\Http\Responses\FailedTwoFactorLoginResponse::class,
@@ -467,7 +479,7 @@ namespace PHPSTORM_META {
         \Laravel\Fortify\Contracts\RegisterViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\RequestPasswordResetLinkViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\ResetPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => App\Actions\Fortify\ResetUserPassword::class,
+        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => \App\Actions\Fortify\ResetUserPassword::class,
         \Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider::class => \Laravel\Fortify\TwoFactorAuthenticationProvider::class,
         \Laravel\Fortify\Contracts\TwoFactorChallengeViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\TwoFactorConfirmedResponse::class => \Laravel\Fortify\Http\Responses\TwoFactorConfirmedResponse::class,
@@ -549,7 +561,7 @@ namespace PHPSTORM_META {
         \Illuminate\Routing\Contracts\ControllerDispatcher::class => \Illuminate\Routing\ControllerDispatcher::class,
         \Inertia\Ssr\Gateway::class => \Inertia\Ssr\HttpGateway::class,
         \Laravel\Fortify\Contracts\ConfirmPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\CreatesNewUsers::class => App\Actions\Fortify\CreateNewUser::class,
+        \Laravel\Fortify\Contracts\CreatesNewUsers::class => \App\Actions\Fortify\CreateNewUser::class,
         \Laravel\Fortify\Contracts\EmailVerificationNotificationSentResponse::class => \Laravel\Fortify\Http\Responses\EmailVerificationNotificationSentResponse::class,
         \Laravel\Fortify\Contracts\FailedPasswordConfirmationResponse::class => \Laravel\Fortify\Http\Responses\FailedPasswordConfirmationResponse::class,
         \Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse::class => \Laravel\Fortify\Http\Responses\FailedTwoFactorLoginResponse::class,
@@ -566,7 +578,7 @@ namespace PHPSTORM_META {
         \Laravel\Fortify\Contracts\RegisterViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\RequestPasswordResetLinkViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\ResetPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => App\Actions\Fortify\ResetUserPassword::class,
+        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => \App\Actions\Fortify\ResetUserPassword::class,
         \Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider::class => \Laravel\Fortify\TwoFactorAuthenticationProvider::class,
         \Laravel\Fortify\Contracts\TwoFactorChallengeViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\TwoFactorConfirmedResponse::class => \Laravel\Fortify\Http\Responses\TwoFactorConfirmedResponse::class,
@@ -648,7 +660,7 @@ namespace PHPSTORM_META {
         \Illuminate\Routing\Contracts\ControllerDispatcher::class => \Illuminate\Routing\ControllerDispatcher::class,
         \Inertia\Ssr\Gateway::class => \Inertia\Ssr\HttpGateway::class,
         \Laravel\Fortify\Contracts\ConfirmPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\CreatesNewUsers::class => App\Actions\Fortify\CreateNewUser::class,
+        \Laravel\Fortify\Contracts\CreatesNewUsers::class => \App\Actions\Fortify\CreateNewUser::class,
         \Laravel\Fortify\Contracts\EmailVerificationNotificationSentResponse::class => \Laravel\Fortify\Http\Responses\EmailVerificationNotificationSentResponse::class,
         \Laravel\Fortify\Contracts\FailedPasswordConfirmationResponse::class => \Laravel\Fortify\Http\Responses\FailedPasswordConfirmationResponse::class,
         \Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse::class => \Laravel\Fortify\Http\Responses\FailedTwoFactorLoginResponse::class,
@@ -665,7 +677,7 @@ namespace PHPSTORM_META {
         \Laravel\Fortify\Contracts\RegisterViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\RequestPasswordResetLinkViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\ResetPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => App\Actions\Fortify\ResetUserPassword::class,
+        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => \App\Actions\Fortify\ResetUserPassword::class,
         \Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider::class => \Laravel\Fortify\TwoFactorAuthenticationProvider::class,
         \Laravel\Fortify\Contracts\TwoFactorChallengeViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\TwoFactorConfirmedResponse::class => \Laravel\Fortify\Http\Responses\TwoFactorConfirmedResponse::class,
@@ -747,7 +759,7 @@ namespace PHPSTORM_META {
         \Illuminate\Routing\Contracts\ControllerDispatcher::class => \Illuminate\Routing\ControllerDispatcher::class,
         \Inertia\Ssr\Gateway::class => \Inertia\Ssr\HttpGateway::class,
         \Laravel\Fortify\Contracts\ConfirmPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\CreatesNewUsers::class => App\Actions\Fortify\CreateNewUser::class,
+        \Laravel\Fortify\Contracts\CreatesNewUsers::class => \App\Actions\Fortify\CreateNewUser::class,
         \Laravel\Fortify\Contracts\EmailVerificationNotificationSentResponse::class => \Laravel\Fortify\Http\Responses\EmailVerificationNotificationSentResponse::class,
         \Laravel\Fortify\Contracts\FailedPasswordConfirmationResponse::class => \Laravel\Fortify\Http\Responses\FailedPasswordConfirmationResponse::class,
         \Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse::class => \Laravel\Fortify\Http\Responses\FailedTwoFactorLoginResponse::class,
@@ -764,7 +776,7 @@ namespace PHPSTORM_META {
         \Laravel\Fortify\Contracts\RegisterViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\RequestPasswordResetLinkViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\ResetPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => App\Actions\Fortify\ResetUserPassword::class,
+        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => \App\Actions\Fortify\ResetUserPassword::class,
         \Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider::class => \Laravel\Fortify\TwoFactorAuthenticationProvider::class,
         \Laravel\Fortify\Contracts\TwoFactorChallengeViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\TwoFactorConfirmedResponse::class => \Laravel\Fortify\Http\Responses\TwoFactorConfirmedResponse::class,
@@ -846,7 +858,7 @@ namespace PHPSTORM_META {
         \Illuminate\Routing\Contracts\ControllerDispatcher::class => \Illuminate\Routing\ControllerDispatcher::class,
         \Inertia\Ssr\Gateway::class => \Inertia\Ssr\HttpGateway::class,
         \Laravel\Fortify\Contracts\ConfirmPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\CreatesNewUsers::class => App\Actions\Fortify\CreateNewUser::class,
+        \Laravel\Fortify\Contracts\CreatesNewUsers::class => \App\Actions\Fortify\CreateNewUser::class,
         \Laravel\Fortify\Contracts\EmailVerificationNotificationSentResponse::class => \Laravel\Fortify\Http\Responses\EmailVerificationNotificationSentResponse::class,
         \Laravel\Fortify\Contracts\FailedPasswordConfirmationResponse::class => \Laravel\Fortify\Http\Responses\FailedPasswordConfirmationResponse::class,
         \Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse::class => \Laravel\Fortify\Http\Responses\FailedTwoFactorLoginResponse::class,
@@ -863,7 +875,7 @@ namespace PHPSTORM_META {
         \Laravel\Fortify\Contracts\RegisterViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\RequestPasswordResetLinkViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\ResetPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => App\Actions\Fortify\ResetUserPassword::class,
+        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => \App\Actions\Fortify\ResetUserPassword::class,
         \Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider::class => \Laravel\Fortify\TwoFactorAuthenticationProvider::class,
         \Laravel\Fortify\Contracts\TwoFactorChallengeViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\TwoFactorConfirmedResponse::class => \Laravel\Fortify\Http\Responses\TwoFactorConfirmedResponse::class,
@@ -945,7 +957,7 @@ namespace PHPSTORM_META {
         \Illuminate\Routing\Contracts\ControllerDispatcher::class => \Illuminate\Routing\ControllerDispatcher::class,
         \Inertia\Ssr\Gateway::class => \Inertia\Ssr\HttpGateway::class,
         \Laravel\Fortify\Contracts\ConfirmPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\CreatesNewUsers::class => App\Actions\Fortify\CreateNewUser::class,
+        \Laravel\Fortify\Contracts\CreatesNewUsers::class => \App\Actions\Fortify\CreateNewUser::class,
         \Laravel\Fortify\Contracts\EmailVerificationNotificationSentResponse::class => \Laravel\Fortify\Http\Responses\EmailVerificationNotificationSentResponse::class,
         \Laravel\Fortify\Contracts\FailedPasswordConfirmationResponse::class => \Laravel\Fortify\Http\Responses\FailedPasswordConfirmationResponse::class,
         \Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse::class => \Laravel\Fortify\Http\Responses\FailedTwoFactorLoginResponse::class,
@@ -962,7 +974,7 @@ namespace PHPSTORM_META {
         \Laravel\Fortify\Contracts\RegisterViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\RequestPasswordResetLinkViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\ResetPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => App\Actions\Fortify\ResetUserPassword::class,
+        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => \App\Actions\Fortify\ResetUserPassword::class,
         \Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider::class => \Laravel\Fortify\TwoFactorAuthenticationProvider::class,
         \Laravel\Fortify\Contracts\TwoFactorChallengeViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\TwoFactorConfirmedResponse::class => \Laravel\Fortify\Http\Responses\TwoFactorConfirmedResponse::class,
@@ -1044,7 +1056,7 @@ namespace PHPSTORM_META {
         \Illuminate\Routing\Contracts\ControllerDispatcher::class => \Illuminate\Routing\ControllerDispatcher::class,
         \Inertia\Ssr\Gateway::class => \Inertia\Ssr\HttpGateway::class,
         \Laravel\Fortify\Contracts\ConfirmPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\CreatesNewUsers::class => App\Actions\Fortify\CreateNewUser::class,
+        \Laravel\Fortify\Contracts\CreatesNewUsers::class => \App\Actions\Fortify\CreateNewUser::class,
         \Laravel\Fortify\Contracts\EmailVerificationNotificationSentResponse::class => \Laravel\Fortify\Http\Responses\EmailVerificationNotificationSentResponse::class,
         \Laravel\Fortify\Contracts\FailedPasswordConfirmationResponse::class => \Laravel\Fortify\Http\Responses\FailedPasswordConfirmationResponse::class,
         \Laravel\Fortify\Contracts\FailedTwoFactorLoginResponse::class => \Laravel\Fortify\Http\Responses\FailedTwoFactorLoginResponse::class,
@@ -1061,7 +1073,7 @@ namespace PHPSTORM_META {
         \Laravel\Fortify\Contracts\RegisterViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\RequestPasswordResetLinkViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\ResetPasswordViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
-        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => App\Actions\Fortify\ResetUserPassword::class,
+        \Laravel\Fortify\Contracts\ResetsUserPasswords::class => \App\Actions\Fortify\ResetUserPassword::class,
         \Laravel\Fortify\Contracts\TwoFactorAuthenticationProvider::class => \Laravel\Fortify\TwoFactorAuthenticationProvider::class,
         \Laravel\Fortify\Contracts\TwoFactorChallengeViewResponse::class => \Laravel\Fortify\Http\Responses\SimpleViewResponse::class,
         \Laravel\Fortify\Contracts\TwoFactorConfirmedResponse::class => \Laravel\Fortify\Http\Responses\TwoFactorConfirmedResponse::class,
@@ -1124,22 +1136,22 @@ namespace PHPSTORM_META {
     ]));
 
     override(auth()->user(), map([
-        '' => App\Models\User::class,
+        '' => \App\Models\User::class,
     ]));
     override((new \Illuminate\Contracts\Auth\Guard())->user(), map([
-        '' => App\Models\User::class,
+        '' => \App\Models\User::class,
     ]));
     override(\Illuminate\Support\Facades\Auth::user(), map([
-        '' => App\Models\User::class,
+        '' => \App\Models\User::class,
     ]));
     override(request()->user(), map([
-        '' => App\Models\User::class,
+        '' => \App\Models\User::class,
     ]));
     override(\Illuminate\Http\Request::user(), map([
-        '' => App\Models\User::class,
+        '' => \App\Models\User::class,
     ]));
     override(\Illuminate\Support\Facades\Request::user(), map([
-        '' => App\Models\User::class,
+        '' => \App\Models\User::class,
     ]));
 
     override(config(), map([
