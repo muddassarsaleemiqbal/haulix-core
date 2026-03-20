@@ -1,14 +1,10 @@
 {
-    "agents": [
-        "copilot"
-    ],
+    "agents": ["copilot"],
     "guidelines": true,
     "herd_mcp": true,
     "mcp": true,
     "nightwatch_mcp": false,
-    "packages": [
-        "laravel/fortify"
-    ],
+    "packages": ["laravel/fortify"],
     "sail": false,
     "skills": [
         "wayfinder-development",
