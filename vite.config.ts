@@ -5,14 +5,14 @@ import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite-plus';
 
 export default defineConfig({
-    staged: {
-        '*': 'vp check --fix',
-        '*.php': [
-            './vendor/bin/pint --parallel',
-            './vendor/bin/rector',
-            './vendor/bin/phpstan analyse --memory-limit=-1',
-        ],
-    },
+    // staged: {
+    //     '*': 'vp check --fix',
+    //     '*.php': [
+    //         './vendor/bin/pint --parallel',
+    //         './vendor/bin/rector',
+    //         './vendor/bin/phpstan analyse --memory-limit=-1',
+    //     ],
+    // },
     plugins: [
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.tsx'],
