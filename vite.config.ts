@@ -9,7 +9,6 @@ export default defineConfig({
         '*': 'vp check --fix',
         '*.php': [
             './vendor/bin/pint --parallel',
-            './vendor/bin/rector',
             './vendor/bin/phpstan analyse --memory-limit=-1',
         ],
     },
