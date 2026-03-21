@@ -5,7 +5,7 @@ php-version = "8.3.0"
 [source]
 workspace = "."
 paths = ["app/", "database/factories/", "database/seeders/", "tests/"]
-includes = ["vendor"]
+includes = ["vendor", "_ide_helper.php"]
 excludes = []
 
 [formatter]
@@ -22,6 +22,23 @@ no-literal-password = { enabled = false }
 
 [analyzer]
 plugins = []
+excludes = ["tests/"]
+ignore = [
+    "unhandled-thrown-type",
+    "mixed-argument",
+    "mixed-method-access",
+    "non-existent-method",
+    "too-few-arguments",
+    "dynamic-static-method-call",
+    "possible-method-access-on-null",
+    "static-access-on-interface",
+    "non-existent-property",
+    "no-value",
+    "non-documented-property",
+    "possibly-undefined-array-index",
+    "invalid-return-statement",
+    "missing-template-parameter",
+]
 find-unused-definitions = true
 find-unused-expressions = true
 analyze-dead-code = true

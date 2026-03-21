@@ -11,6 +11,7 @@ export default defineConfig({
         '*.php': [
             './vendor/bin/mago fmt',
             './vendor/bin/mago lint --fix --unsafe',
+            './vendor/bin/mago analyze --fix',
         ],
     },
     plugins: [

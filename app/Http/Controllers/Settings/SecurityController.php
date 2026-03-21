@@ -19,6 +19,7 @@ final class SecurityController extends Controller implements HasMiddleware
     /**
      * Get the middleware that should be assigned to the controller.
      */
+    #[\Override]
     public static function middleware(): array
     {
         return (
