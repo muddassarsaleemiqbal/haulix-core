@@ -25,6 +25,7 @@ use Spatie\Permission\Models\Permission as SpatiePermission;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission withoutRole($roles, ?string $guard = null)
  *
  * @mixin \Eloquent
+ * * hello world
  */
 final class Permission extends SpatiePermission
 {

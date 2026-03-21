@@ -21,6 +21,7 @@ use Spatie\Permission\Models\Role as SpatieRole;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Role withoutPermission($permissions)
  *
  * @mixin \Eloquent
+ * hello world
  */
 final class Role extends SpatieRole
 {
