@@ -7,10 +7,7 @@ import { defineConfig } from 'vite-plus';
 export default defineConfig({
     staged: {
         '*': 'vp check --fix',
-        '*.php': [
-            './vendor/bin/pint --parallel',
-            './vendor/bin/phpstan analyse --memory-limit=-1',
-        ],
+        '*.php': ['./vendor/bin/pint --parallel'],
     },
     plugins: [
         laravel({

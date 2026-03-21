@@ -8,11 +8,13 @@ namespace App\Models;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Override;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * @property int $id
@@ -46,6 +48,17 @@ use Override;
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
  *
  * @mixin \Illuminate\Database\Eloquent\Model
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Permission> $permissions
+ * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Role> $roles
+ * @property-read int|null $roles_count
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User permission($permissions, bool $without = false)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User role($roles, ?string $guard = null, bool $without = false)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutPermission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutRole($roles, ?string $guard = null)
+ *
  * @mixin \Eloquent
  */
 #[Fillable(['name', 'email', 'password'])]
@@ -53,7 +66,7 @@ use Override;
 final class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable, TwoFactorAuthenticatable;
+    use HasFactory, HasRoles, HasUuids, Notifiable, TwoFactorAuthenticatable;
 
     /**
      * Get the attributes that should be cast.
