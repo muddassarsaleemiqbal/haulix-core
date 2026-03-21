@@ -9,14 +9,13 @@ on:
 permissions:
   contents: write
 
-# 🔥 Cancel previous runs on same branch
 concurrency:
   group: linter-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   # =========================
-  # BACKEND (PHP / MAGO)
+  # BACKEND
   # =========================
   backend:
     runs-on: ubuntu-latest
@@ -28,9 +27,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
-          tools: composer
 
-      # ✅ Composer Cache
       - name: Cache Composer
         uses: actions/cache@v4
         with:
@@ -38,19 +35,11 @@ jobs:
             ~/.composer/cache
             vendor
           key: composer-${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
-          restore-keys: |
-            composer-${{ runner.os }}-
+          restore-keys: composer-${{ runner.os }}-
 
-      # ✅ Install PHP deps (fast + deterministic)
       - name: Install Dependencies
-        run: |
-          composer install \
-            --no-interaction \
-            --no-progress \
-            --prefer-dist \
-            --optimize-autoloader
+        run: composer install --no-interaction --no-progress --prefer-dist
 
-      # ✅ Mago (already cached via vendor)
       - name: Run Mago Format
         run: ./vendor/bin/mago fmt --check
 
@@ -58,7 +47,7 @@ jobs:
         run: ./vendor/bin/mago lint
 
   # =========================
-  # FRONTEND (VITE+)
+  # FRONTEND (FIXED)
   # =========================
   frontend:
     runs-on: ubuntu-latest
@@ -66,7 +55,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      # 🔍 Detect relevant changes
+      # 🔍 Detect changes
       - name: Detect Changes
         id: changes
         uses: dorny/paths-filter@v3
@@ -79,15 +68,41 @@ jobs:
               - 'pnpm-lock.yaml'
               - 'vite.config.*'
               - 'tsconfig.json'
+              - 'app/**'         # ⚠️ Laravel code affects Wayfinder
+              - 'routes/**'      # ⚠️ critical
+              - 'composer.lock'  # ⚠️ backend changes affect build
 
+      # ✅ PHP REQUIRED
+      - name: Setup PHP
+        if: steps.changes.outputs.frontend == 'true'
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      # ✅ Composer cache (needed for artisan)
+      - name: Cache Composer
+        if: steps.changes.outputs.frontend == 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.composer/cache
+            vendor
+          key: composer-${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
+      - name: Install PHP Dependencies
+        if: steps.changes.outputs.frontend == 'true'
+        run: composer install --no-interaction --no-progress --prefer-dist
+
+      # ✅ Node setup
       - name: Setup Vite+
+        if: steps.changes.outputs.frontend == 'true'
         uses: voidzero-dev/setup-vp@v1
         with:
           node-version: 24
-          cache: true
 
-      # ✅ Node / Vite cache
+      # ✅ Node cache
       - name: Cache Node
+        if: steps.changes.outputs.frontend == 'true'
         uses: actions/cache@v4
         with:
           path: |
@@ -95,20 +110,16 @@ jobs:
             ~/.npm
             ~/.cache
           key: node-${{ runner.os }}-${{ hashFiles('**/package-lock.json', '**/pnpm-lock.yaml') }}
-          restore-keys: |
-            node-${{ runner.os }}-
 
-      # ✅ Install only if needed (huge win)
-      - name: Install Dependencies
+      - name: Install Node Dependencies
         if: steps.changes.outputs.frontend == 'true'
         run: vp install
 
-      # 🚫 Skip build unless required
+      # ⚠️ This now works because PHP + vendor exists
       - name: Build Frontend
         if: steps.changes.outputs.frontend == 'true'
         run: vp build
 
-      # ✅ Lint (can run always OR conditionally)
       - name: Run Frontend Lint
         if: steps.changes.outputs.frontend == 'true'
         run: vp check
