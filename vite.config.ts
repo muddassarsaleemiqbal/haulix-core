@@ -7,7 +7,10 @@ import { defineConfig } from 'vite-plus';
 export default defineConfig({
     staged: {
         '*': 'vp check --fix',
-        '*.php': ['./vendor/bin/pint --parallel'],
+        '*.php': [
+            './vendor/bin/mago fmt',
+            './vendor/bin/mago lint --fix --unsafe',
+        ],
     },
     plugins: [
         laravel({

@@ -94,7 +94,8 @@ test('already verified user visiting verification link is redirected without fir
         ['id' => $user->id, 'hash' => sha1($user->email)],
     );
 
-    $this->actingAs($user)->get($verificationUrl)
+    $this->actingAs($user)
+        ->get($verificationUrl)
         ->assertRedirect(route('dashboard', absolute: false).'?verified=1');
 
     Event::assertNotDispatched(Verified::class);
