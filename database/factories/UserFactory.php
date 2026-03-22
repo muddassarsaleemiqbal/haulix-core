@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use OverflowException;
 
 /**
  * @extends Factory<User>
@@ -23,6 +24,7 @@ final class UserFactory extends Factory
      * Define the model's default state.
      *
      * @return array<string, mixed>
+     * @throws OverflowException
      */
     #[\Override]
     public function definition(): array

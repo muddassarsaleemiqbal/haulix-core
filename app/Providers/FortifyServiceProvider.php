@@ -55,7 +55,7 @@ final class FortifyServiceProvider extends ServiceProvider
         ]));
 
         Fortify::resetPasswordView(static fn (Request $request) => Inertia::render('auth/reset-password', [
-            'email' => $request->email,
+            'email' => $request->input('email'),
             'token' => $request->route('token'),
         ]));
 
@@ -84,8 +84,12 @@ final class FortifyServiceProvider extends ServiceProvider
         )));
 
         RateLimiter::for('login', static function (Request $request) {
+            /**
+             * @var string $username
+             */
+            $username = $request->input(Fortify::username());
             $throttleKey = Str::transliterate(
-                Str::lower($request->input(Fortify::username())).'|'.($request->ip() ?? ''),
+                Str::lower($username).'|'.($request->ip() ?? ''),
             );
 
             return Limit::perMinute(5)->by($throttleKey);

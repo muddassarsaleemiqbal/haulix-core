@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Database\Factories\RoleFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Permission\Models\Role as SpatieRole;
@@ -25,7 +26,7 @@ use Spatie\Permission\Models\Role as SpatieRole;
  */
 final class Role extends SpatieRole
 {
-    /** @phpstan-ignore-next-line */
+    /** @use HasFactory<RoleFactory> */
     use HasFactory;
 
     use HasUuids;

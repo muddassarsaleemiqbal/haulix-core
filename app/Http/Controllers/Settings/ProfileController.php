@@ -14,11 +14,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Inertia\Response;
+use LogicException;
+use RuntimeException;
 
 final class ProfileController extends Controller
 {
     /**
      * Show the user's profile settings page.
+     * @throws RuntimeException
      */
     public function edit(Request $request): Response
     {
@@ -46,6 +49,7 @@ final class ProfileController extends Controller
 
     /**
      * Delete the user's profile.
+     * @throws LogicException
      */
     public function destroy(ProfileDeleteRequest $request): RedirectResponse
     {
@@ -54,8 +58,10 @@ final class ProfileController extends Controller
          */
         $user = $request->user();
 
+        // @mago-expect analyzer:static-access-on-interface
         Auth::logout();
 
+        // @mago-expect analyzer:dynamic-static-method-call,too-few-arguments
         $user->delete();
 
         $request->session()->invalidate();

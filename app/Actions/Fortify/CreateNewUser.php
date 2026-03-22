@@ -8,6 +8,7 @@ use App\Concerns\PasswordValidationRules;
 use App\Concerns\ProfileValidationRules;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 final class CreateNewUser implements CreatesNewUsers
@@ -18,6 +19,7 @@ final class CreateNewUser implements CreatesNewUsers
      * Validate and create a newly registered user.
      *
      * @param  array<array-key, mixed>  $input
+     * @throws ValidationException
      */
     #[\Override]
     public function create(array $input): User
@@ -27,9 +29,12 @@ final class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
+        /**
+         * @var User $user
+         */
         return User::query()->create([
-            'name' => $input['name'],
-            'email' => $input['email'],
+            'name' => $input['name'] ?? '',
+            'email' => $input['email'] ?? '',
             'password' => $input['password'] ?? '',
         ]);
     }

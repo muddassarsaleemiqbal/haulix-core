@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
+use InvalidArgumentException;
 use Override;
 
 final class AppServiceProvider extends ServiceProvider
@@ -21,6 +22,7 @@ final class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
+     * @throws InvalidArgumentException
      */
     public function boot(): void
     {
@@ -29,6 +31,7 @@ final class AppServiceProvider extends ServiceProvider
 
     /**
      * Configure default behaviors for production-ready applications.
+     * @throws InvalidArgumentException
      */
     private function configureDefaults(): void
     {
