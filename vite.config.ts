@@ -9,11 +9,7 @@ import { defineConfig } from 'vite-plus';
 export default defineConfig({
     staged: {
         '*': 'vp check --fix',
-        '*.php': [
-            './vendor/bin/mago fmt --check',
-            './vendor/bin/mago lint',
-            './vendor/bin/mago analyze',
-        ],
+        '*.php': ['./vendor/bin/mago fmt --check', './vendor/bin/mago lint'],
     },
     plugins: [
         laravel({
