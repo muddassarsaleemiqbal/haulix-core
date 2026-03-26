@@ -29,10 +29,10 @@ final class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        /**
-         * @var User $user
-         */
-        return User::query()->create([
+        /** @var \Illuminate\Database\Eloquent\Builder<User> $query */
+        $query = User::query();
+
+        return $query->create([
             'name' => $input['name'] ?? '',
             'email' => $input['email'] ?? '',
             'password' => $input['password'] ?? '',

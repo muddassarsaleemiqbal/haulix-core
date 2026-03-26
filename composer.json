@@ -58,13 +58,16 @@
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"npm run dev\" --names='server,queue,vite'"
         ],
         "check": [
+            "vp run lint:check",
+            "./vendor/bin/mago fmt --check",
+            "./vendor/bin/mago lint",
+            "./vendor/bin/mago analyze"
+        ],
+        "lint": [
             "vp run lint",
             "./vendor/bin/mago fmt",
             "./vendor/bin/mago lint --fix --unsafe",
             "./vendor/bin/mago analyze --fix --unsafe"
-        ],
-        "lint:check": [
-            "pint --parallel --test"
         ],
         "ci:check": [
             "Composer\\Config::disableProcessTimeout",

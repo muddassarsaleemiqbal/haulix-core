@@ -10,9 +10,9 @@ export default defineConfig({
     staged: {
         '*': 'vp check --fix',
         '*.php': [
-            './vendor/bin/mago fmt',
-            './vendor/bin/mago lint --fix --unsafe',
-            './vendor/bin/mago analyze --fix --unsafe',
+            './vendor/bin/mago fmt --check',
+            './vendor/bin/mago lint',
+            './vendor/bin/mago analyze',
         ],
     },
     plugins: [

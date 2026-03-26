@@ -37,7 +37,9 @@ class UserSeeder extends Seeder
         ];
 
         foreach ($users as $user) {
-            $createdUser = User::create($user['data']);
+            /** @var \Illuminate\Database\Eloquent\Builder<User> $query */
+            $query = User::query();
+            $createdUser = $query->create($user['data']);
             $createdUser->assignRole($user['roles']);
         }
     }
