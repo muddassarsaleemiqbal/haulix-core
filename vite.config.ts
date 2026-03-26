@@ -1,3 +1,4 @@
+import inertia from '@inertiajs/vite';
 import { wayfinder } from '@laravel/vite-plugin-wayfinder';
 import babel from '@rolldown/plugin-babel';
 import tailwindcss from '@tailwindcss/vite';
@@ -11,16 +12,16 @@ export default defineConfig({
         '*.php': [
             './vendor/bin/mago fmt',
             './vendor/bin/mago lint --fix --unsafe',
-            './vendor/bin/mago analyze --fix',
+            './vendor/bin/mago analyze --fix --unsafe',
         ],
     },
     plugins: [
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.tsx'],
-            ssr: 'resources/js/ssr.tsx',
             refresh: true,
         }),
         react(),
+        inertia(),
         babel({ presets: [reactCompilerPreset()] }),
         tailwindcss(),
         wayfinder({
