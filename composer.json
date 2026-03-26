@@ -10,11 +10,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
-        "inertiajs/inertia-laravel": "^3.0",
-        "laravel/fortify": "^1.36.1",
-        "laravel/framework": "^13.1.1",
+        "inertiajs/inertia-laravel": "^3.0.1",
+        "laravel/fortify": "^1.36.2",
+        "laravel/framework": "^13.2.0",
         "laravel/tinker": "^3.0",
-        "laravel/wayfinder": "^0.1.14",
+        "laravel/wayfinder": "^0.1.15",
         "nunomaduro/essentials": "^1.2",
         "spatie/laravel-permission": "^7.2.4"
     },
@@ -23,12 +23,12 @@
         "carthage-software/mago": "1.15.3",
         "driftingly/rector-laravel": "^2.2",
         "fakerphp/faker": "^1.24.1",
-        "laravel/boost": "^2.3.4",
+        "laravel/boost": "^2.4.1",
         "laravel/pail": "^1.2.6",
-        "laravel/sail": "^1.54",
+        "laravel/sail": "^1.55",
         "mockery/mockery": "^1.6.12",
         "nunomaduro/collision": "^8.9.1",
-        "pestphp/pest": "^4.4.2",
+        "pestphp/pest": "^4.4.3",
         "pestphp/pest-plugin-laravel": "^4.1",
         "rector/rector": "^2.3.9"
     },
@@ -100,6 +100,10 @@
         ],
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ],
+        "update:requirements": [
+            "composer bump",
+            "bunx npm-check-updates -u"
         ]
     },
     "extra": {
